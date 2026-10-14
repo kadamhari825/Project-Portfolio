@@ -185,7 +185,7 @@
   .tag { font-family: var(--mono); font-size: 10px; padding: 5px 11px; border: 1px solid var(--rule); color: var(--ink-soft); background: var(--bg); letter-spacing: 0.04em; }
  
   /* === PROJECTS === */
-  .projects-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); max-width: 640px; }
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
   .proj-card {
     background: var(--bg); padding: 0;
     text-decoration: none; color: inherit;
@@ -286,6 +286,14 @@
     position: relative;
   }
   .arch-slot img { display: block; width: 100%; height: auto; }
+  .arch-slot svg { display: block; width: 100%; height: auto; padding: 8px 0; }
+  .arch-slot .n { fill: var(--bg); stroke: var(--ink-soft); stroke-width: 1; }
+  .arch-slot .n-accent { fill: var(--accent); stroke: var(--accent); }
+  .arch-slot .l { stroke: var(--ink-faint); stroke-width: 1; fill: none; }
+  .arch-slot .l-dash { stroke-dasharray: 3 4; }
+  .arch-slot .t { font-family: "JetBrains Mono", monospace; font-size: 11px; fill: var(--ink); }
+  .arch-slot .t-on-accent { fill: var(--bg); }
+  .arch-slot .cap { font-family: "JetBrains Mono", monospace; font-size: 9px; fill: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em; }
  
   .modal-actions { display: flex; gap: 14px; margin-top: 44px; padding-top: 32px; border-top: 1px solid var(--rule); flex-wrap: wrap; }
   .modal-btn { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; padding: 13px 24px; border: 1px solid var(--ink); color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s, color 0.2s; cursor: pointer; background: none; }
@@ -337,7 +345,7 @@
     .about-grid { grid-template-columns: 1fr; gap: 44px; }
     .exp-item { grid-template-columns: 1fr; gap: 12px; }
     .exp-left { flex-direction: row; gap: 14px; align-items: center; }
-    .projects-grid { max-width: 100%; }
+    .projects-grid { max-width: 100%; grid-template-columns: 1fr; }
     .skills-matrix { grid-template-columns: 1fr 1fr; }
     .skill-cell, .skill-cell:nth-child(4), .skill-cell:nth-child(5) { grid-column: span 1; }
     .currently-row { flex-direction: column; }
@@ -434,7 +442,7 @@
         <div class="stat-panel">
           <div><div class="stat-big">3+</div><div class="stat-lbl">Years in data</div></div>
           <div><div class="stat-big">GCP</div><div class="stat-lbl">Primary cloud</div></div>
-          <div><div class="stat-big">1</div><div class="stat-lbl">Live project</div></div>
+          <div><div class="stat-big">2</div><div class="stat-lbl">Live projects</div></div>
           <div><div class="stat-big">∞</div><div class="stat-lbl">SQL queries tuned</div></div>
         </div>
         <div class="cert-strip">
@@ -521,6 +529,43 @@
         </div>
       </a>
  
+      <a class="proj-card" href="#" onclick="openModal('proj2'); return false;" role="button" aria-haspopup="dialog">
+        <div class="proj-preview">
+          <svg viewBox="0 0 400 110" preserveAspectRatio="xMidYMid meet">
+            <line class="l" x1="71" y1="55" x2="92" y2="55"/>
+            <line class="l" x1="148" y1="55" x2="169" y2="55"/>
+            <line class="l" x1="225" y1="55" x2="246" y2="55"/>
+            <line class="l" x1="302" y1="55" x2="323" y2="55"/>
+            <rect class="n" x="15" y="40" width="56" height="30"/>
+            <rect class="n" x="92" y="40" width="56" height="30"/>
+            <rect class="n" x="169" y="40" width="56" height="30"/>
+            <rect class="n" x="246" y="40" width="56" height="30"/>
+            <rect class="n-accent" x="323" y="40" width="56" height="30"/>
+            <text class="t" x="43" y="28" text-anchor="middle">Extract</text>
+            <text class="t" x="120" y="28" text-anchor="middle">Validate</text>
+            <text class="t" x="197" y="28" text-anchor="middle">Quality</text>
+            <text class="t" x="274" y="28" text-anchor="middle">Transform</text>
+            <text class="t" x="351" y="28" text-anchor="middle" fill="var(--accent)">Publish</text>
+            <text class="t" x="8" y="100" fill="var(--ink-faint)">02 · BATCH PIPELINE</text>
+          </svg>
+        </div>
+        <div class="proj-content">
+          <div class="proj-head">
+            <div class="proj-num">02</div>
+            <span class="proj-type">Batch · PySpark</span>
+          </div>
+          <h3 class="proj-title">Fault-Tolerant GitHub Events Pipeline</h3>
+          <p class="proj-desc-short">A batch PySpark pipeline that processes hourly GH Archive files with file-level state tracking in SQLite, capped retries, schema validation and late-file handling, backed by 9 passing tests.</p>
+          <div class="proj-stack">
+            <span class="tag">Python</span><span class="tag">PySpark</span><span class="tag">SQLite</span><span class="tag">GH Archive</span><span class="tag">pytest</span>
+          </div>
+          <div class="proj-footer">
+            <span class="proj-link-label">View case study</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </a>
+ 
     </div>
   </div>
 </section>
@@ -566,6 +611,76 @@
       <div class="modal-actions">
         <a class="modal-btn" href="https://github.com/kadamhari825/Financial-data-pipeline" target="_blank" rel="noopener">GitHub Repository ↗</a>
         <button class="modal-btn secondary" onclick="closeModal('proj1')">← Back to Projects</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- MODAL: PROJECT 2 -->
+<div class="modal-overlay" id="modal-proj2" role="dialog" aria-modal="true" aria-labelledby="modal-proj2-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('proj2')" aria-label="Close dialog">✕ Close</button>
+    <div class="modal-header">
+      <div class="modal-eyebrow">Batch Pipeline · PySpark · 2026</div>
+      <h2 class="modal-title" id="modal-proj2-title">Fault-Tolerant GitHub Events Pipeline</h2>
+      <div class="modal-meta-tags">
+        <span class="tag">Python</span><span class="tag">PySpark</span><span class="tag">SQLite</span><span class="tag">GH Archive</span><span class="tag">pytest</span>
+      </div>
+    </div>
+    <div class="modal-body">
+ 
+      <div class="modal-metrics">
+        <div class="modal-metric"><div class="mm-val">9</div><div class="mm-lbl">Tests passing</div></div>
+        <div class="modal-metric"><div class="mm-val">7</div><div class="mm-lbl">Schema fields checked</div></div>
+        <div class="modal-metric"><div class="mm-val">2</div><div class="mm-lbl">Max retries per file</div></div>
+      </div>
+ 
+      <div class="modal-sec-label">Overview</div>
+      <div class="modal-text">
+        A batch pipeline in PySpark that processes hourly event files from GH Archive. Every file is recorded in a SQLite state table, so the pipeline always knows which files are discovered, retried or failed. Each file then moves through schema validation, quality check, transform and publish stages. Focus was on <strong>file-level state</strong>, bounded retries, and decision logic that can be tested without Spark.
+      </div>
+ 
+      <div class="modal-sec-label">Key Engineering Decisions</div>
+      <div class="modal-text">
+        <ul>
+          <li><strong>File-level state in SQLite.</strong> Each new file is registered once, and a file the pipeline has already seen is never reset or duplicated</li>
+          <li><strong>Bounded retries.</strong> A failure adds a retry and keeps the file's state. At the limit of 2, the file is marked failed and shows up in the failed-files report</li>
+          <li><strong>Schema validation on 7 flattened fields.</strong> Missing fields and wrong types are caught, extra fields are allowed, and the comparison is its own function so it is tested without Spark</li>
+          <li><strong>Late-file handling.</strong> A 2 hour window decides what counts as on time, with a backfill switch for historical runs</li>
+          <li><strong>Tested decision logic.</strong> 9 tests cover the retry logic, file discovery and schema comparison</li>
+        </ul>
+      </div>
+ 
+      <div class="modal-sec-label">Architecture</div>
+      <div class="arch-slot">
+        <svg viewBox="0 0 760 210" role="img" aria-label="Pipeline stages: extract, schema check, quality check, transform, publish, with a SQLite state store underneath">
+          <line class="l" x1="135" y1="62" x2="175" y2="62"/>
+          <line class="l" x1="285" y1="62" x2="325" y2="62"/>
+          <line class="l" x1="435" y1="62" x2="475" y2="62"/>
+          <line class="l" x1="585" y1="62" x2="625" y2="62"/>
+          <line class="l l-dash" x1="230" y1="84" x2="230" y2="130"/>
+          <line class="l l-dash" x1="380" y1="84" x2="380" y2="130"/>
+          <line class="l l-dash" x1="530" y1="84" x2="530" y2="130"/>
+          <line class="l l-dash" x1="680" y1="84" x2="680" y2="130"/>
+          <rect class="n" x="25" y="40" width="110" height="44"/>
+          <rect class="n" x="175" y="40" width="110" height="44"/>
+          <rect class="n" x="325" y="40" width="110" height="44"/>
+          <rect class="n" x="475" y="40" width="110" height="44"/>
+          <rect class="n-accent" x="625" y="40" width="110" height="44"/>
+          <rect class="n" x="175" y="130" width="560" height="40"/>
+          <text class="t" x="80" y="67" text-anchor="middle">Extract</text>
+          <text class="t" x="230" y="67" text-anchor="middle">Schema check</text>
+          <text class="t" x="380" y="67" text-anchor="middle">Quality check</text>
+          <text class="t" x="530" y="67" text-anchor="middle">Transform</text>
+          <text class="t t-on-accent" x="680" y="67" text-anchor="middle">Publish</text>
+          <text class="t" x="455" y="155" text-anchor="middle">SQLite state store: one row per file, state and retry count</text>
+          <text class="cap" x="25" y="198">Fig. 02 / Stages</text>
+        </svg>
+      </div>
+ 
+      <div class="modal-actions">
+        <a class="modal-btn" href="https://github.com/kadamhari825/github-events-pipeline" target="_blank" rel="noopener">GitHub Repository ↗</a>
+        <button class="modal-btn secondary" onclick="closeModal('proj2')">← Back to Projects</button>
       </div>
     </div>
   </div>
@@ -765,3 +880,6 @@
 </script>
 </body>
 </html>
+ 
+Claude finished the response
+
